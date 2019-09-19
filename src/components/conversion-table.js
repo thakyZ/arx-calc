@@ -17,9 +17,19 @@ import currencies from '../utils/currencies';
 import conversion from '../utils/conversion';
 
 const useStyles = makeStyles((theme) => ({
-  base: { marginRight: theme.spacing(1) },
-  bonus: { color: green[500] },
-  total: { marginLeft: theme.spacing(1), color: grey[400] },
+  base: {
+    marginRight: theme.spacing(0.25),
+  },
+  bonus: {
+    color: green[500],
+  },
+  bonusWrapper: {
+    color: grey[400],
+  },
+  total: {
+    marginLeft: theme.spacing(1),
+    color: grey[400],
+  },
 }));
 
 const ConversionTable = () => {
@@ -41,9 +51,9 @@ const ConversionTable = () => {
             <TableRow>
               <TableCell>
                 <span className={classes.base}>{c.arx}</span>
-                <span>(</span>
+                <span className={classes.bonusWrapper}>(</span>
                 <span className={classes.bonus}>+{c.bonus}</span>
-                <span>)</span>
+                <span className={classes.bonusWrapper}>)</span>
                 <span className={classes.total}>{c.arx + c.bonus}</span>
               </TableCell>
               <TableCell align="right">{currencies.gbp.label}{c.gbp}</TableCell>
