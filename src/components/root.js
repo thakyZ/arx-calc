@@ -23,13 +23,13 @@ const Root = () => {
 
   useEffect(() => {
     if (shouldEvaluateCurrency) {
-      setCurrencyValue(arxValue / 5000);
+      setCurrencyValue(arxValue / 1250);
     }
   }, [arxValue, shouldEvaluateCurrency]);
 
   useEffect(() => {
     if (shouldEvaluateArx) {
-      setArxValue(currencyValue * 5000)
+      setArxValue(currencyValue * 1250)
     }
   }, [currencyValue, shouldEvaluateArx]);
 
