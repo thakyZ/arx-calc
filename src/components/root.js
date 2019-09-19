@@ -6,13 +6,12 @@ import TextField from '@material-ui/core/TextField'
 
 import SyncIcon from '@material-ui/icons/SyncAlt';
 
+import currencies from '../utils/currencies';
 import useDebounce from '../hooks/useDebounce';
 
-const Root = () => {
-  const currencies = {
-    usd: { name: 'USD', label: '$', conversion: (a, d) => a + d },
-  };
+import ConversionTable from './conversion-table';
 
+const Root = () => {
   const [currency, setCurrency] = useState(currencies.usd);
 
   const [arxValue, setArxValue] = useState(0);
@@ -66,6 +65,7 @@ const Root = () => {
           onChange={e => handleCurrencyChange(e.target.value)}
         />
       </Grid>
+      <ConversionTable />
     </Container>
   );
 };
