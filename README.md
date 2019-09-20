@@ -1,4 +1,9 @@
 ## ARX Conversion Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### TODO
+- [ ] Rescale calculation at each price point rather than single scale from 0 to infinity.
+- [ ] Implement EUR and GBP
+
+### Thanks
+ - @phelbore: Input and suggestions on algo, sorry about the dog.
 
