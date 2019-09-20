@@ -32,13 +32,13 @@ const ConversionForm = () => {
 
   useEffect(() => {
     if (shouldEvaluateCurrency) {
-      setCurrencyValue(arxValue / 1250);
+      setCurrencyValue(currency.convert.fromArx.quad(arxValue));
     }
   }, [arxValue, shouldEvaluateCurrency]);
 
   useEffect(() => {
     if (shouldEvaluateArx) {
-      setArxValue(currencyValue * 1250)
+      setArxValue(currency.convert.toArx.quad(currencyValue));
     }
   }, [currencyValue, shouldEvaluateArx]);
 
