@@ -5,5 +5,5 @@
 - [ ] Implement EUR and GBP
 
 ### Thanks
- - @phelbore: Input and suggestions on algo, sorry about the dog.
+ - [@phelbore](https://github.com/phelbore): Input and suggestions on algo, sorry about the dog.
 
