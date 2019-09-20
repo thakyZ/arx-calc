@@ -15,10 +15,6 @@ const useStyles = makeStyles(theme => ({
   container: {
     height: '100vh',
   },
-  warning: {
-    marginBottom: theme.spacing(4),
-    maxWidth: theme.spacing(64),
-  },
   footer: {
     marginTop: theme.spacing(4),
   },
@@ -39,7 +35,6 @@ const Root = () => {
           className={classes.container}
         >
           <ConversionForm />
-          <Typography variant="caption" align="center" className={classes.warning}>This is a beta, values converted above are inaccurate, I have yet to find a definitive algorithm for conversion. Alternative currencies coming soon.</Typography>
           <ConversionTable />
           <Typography variant="caption" className={classes.footer}>2019 rjhoff | <Link href="https://github.com/rjhoffmann/arx-calc">source</Link></Typography>
         </Grid>
