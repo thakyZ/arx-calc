@@ -38,7 +38,7 @@ const ConversionForm = () => {
 
   useEffect(() => {
     if (shouldEvaluateArx) {
-      setArxValue(currency.convert.toArx.quad(currencyValue));
+      setArxValue(currency.convert.toArx(currencyValue));
     }
   }, [currencyValue, shouldEvaluateArx]);
 
