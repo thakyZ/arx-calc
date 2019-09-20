@@ -25,10 +25,10 @@ const ConversionForm = () => {
   const [currency, setCurrency] = useState(currencies.usd);
 
   const [arxValue, setArxValue] = useState(0);
-  const [shouldEvaluateArx, setShouldEvaluateArx] = useState(true);
+  const [shouldEvaluateArx, setShouldEvaluateArx] = useState(false);
 
   const [currencyValue, setCurrencyValue] = useState(0);
-  const [shouldEvaluateCurrency, setShouldEvaluateCurrency] = useState(true);
+  const [shouldEvaluateCurrency, setShouldEvaluateCurrency] = useState(false);
 
   useEffect(() => {
     if (shouldEvaluateCurrency) {
