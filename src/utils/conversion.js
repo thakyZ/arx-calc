@@ -1,8 +1,7 @@
 import _find from 'lodash/find';
 import _findLast from 'lodash/findLast';
 
-import { types as currencyTypes } from './currencies';
-import { round } from 'mathjs/es/entry/pureFunctionsAny.generated'
+import { round } from 'mathjs'
 
 export const knownValues = [
   { arx: 5000, bonus: 0, gbp: 2.99, eur: 3.49, usd: 3.99 },
@@ -13,35 +12,40 @@ export const knownValues = [
   { arx: 85000, bonus: 15000, gbp: 44.99, eur: 54.99, usd: 59.99 },
 ];
 
-export const endpoints = (value, isArx, currencyType = currencyTypes.usd) => {
+const endpoints = (value, isArx, currencyType) => {
   const a =_findLast(knownValues, (v) => isArx ? v.arx + v.bonus <= value : v[currencyType] <= value)
     || { arx: 0, bonus: 0, gbp: 0, eur: 0, usd: 0 };
 
   const b = _find(knownValues, (v) => isArx ? v.arx + v.bonus >= value : v[currencyType] >= value)
     || { arx: 170000, bonus: 30000, gbp: 89.98, eur: 109.98, usd: 119.98 };
 
-  return [
-    { x: a.arx + a.bonus, y: a[currencyType] },
-    { x: b.arx + b.bonus, y: b[currencyType] },
-  ];
+  return isArx
+    ? [
+      { x: a.arx + a.bonus, y: a[currencyType] },
+      { x: b.arx + b.bonus, y: b[currencyType] },
+    ]
+    : [
+      { x: a[currencyType], y: a.arx + a.bonus },
+      { x: b[currencyType], y: b.arx + b.bonus },
+    ]
 };
 
-export const slope = ([a, b]) => (b.y - a.y)/(b.x - a.x);
-export const intercept = (m, {x, y}) => y - (m * x);
+const slope = ([a, b]) => (b.y - a.y)/(b.x - a.x);
+const intercept = (m, {x, y}) => y - (m * x);
 
 const findKnownValue = (value, isArx, currencyType) => _find(knownValues, (v) => {
   return isArx ? v.arx + v.bonus === value : v[currencyType] === value;
 });
 
 const convert = (value, isArx, currencyType) => {
-  const knownValue = findKnownValue(value, isArx, currencyType)
+  const knownValue = findKnownValue(value, isArx, currencyType);
   if (knownValue) return isArx ? knownValue[currencyType] : knownValue.arx;
 
-  if (isArx) {
-    const e = endpoints(value, true, currencyType);
-    const m = slope(e);
-    const b = intercept(m, e[0]);
+  const e = endpoints(value, isArx, currencyType);
+  const m = slope(e);
+  const b = intercept(m, e[0]);
 
-    return round(m * value + b, 2);
-  }
-}
+  return isArx ? round(m * value + b, 2) : round(m * value + b);
+};
+
+export default convert;

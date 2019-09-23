@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import SyncIcon from '@material-ui/icons/SyncAlt';
 
 import currencies from '../utils/currencies';
+import convert from '../utils/conversion';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -32,13 +33,13 @@ const ConversionForm = () => {
 
   useEffect(() => {
     if (shouldEvaluateCurrency) {
-      setCurrencyValue(currency.convert.fromArx(arxValue));
+      setCurrencyValue(convert(Number(arxValue), true, currency.typeName));
     }
   }, [arxValue, shouldEvaluateCurrency]);
 
   useEffect(() => {
     if (shouldEvaluateArx) {
-      setArxValue(currency.convert.toArx(currencyValue));
+      setArxValue(convert(Number(currencyValue), false, currency.typeName));
     }
   }, [currencyValue, shouldEvaluateArx]);
 
