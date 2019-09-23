@@ -2,8 +2,9 @@ import _find from 'lodash/find';
 import _findLast from 'lodash/findLast';
 
 import { types as currencyTypes } from './currencies';
+import { round } from 'mathjs/es/entry/pureFunctionsAny.generated'
 
-const knownValues = [
+export const knownValues = [
   { arx: 5000, bonus: 0, gbp: 2.99, eur: 3.49, usd: 3.99 },
   { arx: 8400, bonus: 420, gbp: 4.99, eur: 5.99, usd: 6.99 },
   { arx: 16800, bonus: 900, gbp: 9.59, eur: 11.49, usd: 12.99 },
@@ -28,4 +29,19 @@ export const endpoints = (value, isArx, currencyType = currencyTypes.usd) => {
 export const slope = ([a, b]) => (b.y - a.y)/(b.x - a.x);
 export const intercept = (m, {x, y}) => y - (m * x);
 
-export default knownValues;
+const findKnownValue = (value, isArx, currencyType) => _find(knownValues, (v) => {
+  return isArx ? v.arx + v.bonus === value : v[currencyType] === value;
+});
+
+const convert = (value, isArx, currencyType) => {
+  const knownValue = findKnownValue(value, isArx, currencyType)
+  if (knownValue) return isArx ? knownValue[currencyType] : knownValue.arx;
+
+  if (isArx) {
+    const e = endpoints(value, true, currencyType);
+    const m = slope(e);
+    const b = intercept(m, e[0]);
+
+    return round(m * value + b, 2);
+  }
+}

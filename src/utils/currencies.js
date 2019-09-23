@@ -7,6 +7,7 @@ export default {
   usd: {
     name: 'USD',
     label: '$',
+    typeName: types.usd,
     convert: {
       toArx: (x) => {
         if (x <= 3.99) return round(1253.13 * x);
@@ -27,6 +28,6 @@ export default {
       },
     },
   },
-  gbp: { name: 'GBP', label: '£'},
-  eur: { name: 'EUR', label: '€' },
+  gbp: { name: 'GBP', label: '£', typeName: types.gbp },
+  eur: { name: 'EUR', label: '€', typeName: types.eur },
 };
