@@ -14,7 +14,7 @@ import { green, grey } from '@material-ui/core/colors';
 import _map from 'lodash/map';
 
 import currencies from '../utils/currencies';
-import conversion from '../utils/conversion';
+import { knownValues } from '../utils/conversion';
 
 const useStyles = makeStyles((theme) => ({
   base: {
@@ -47,7 +47,7 @@ const ConversionTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {_map(conversion, (c) => (
+          {_map(knownValues, (c) => (
             <TableRow>
               <TableCell>
                 <span className={classes.base}>{c.arx}</span>
