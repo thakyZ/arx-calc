@@ -35,13 +35,13 @@ const ConversionForm = () => {
     if (shouldEvaluateCurrency) {
       setCurrencyValue(convert(Number(arxValue), true, currency.typeName));
     }
-  }, [arxValue, shouldEvaluateCurrency]);
+  }, [arxValue, shouldEvaluateCurrency, currency.typeName]);
 
   useEffect(() => {
     if (shouldEvaluateArx) {
       setArxValue(convert(Number(currencyValue), false, currency.typeName));
     }
-  }, [currencyValue, shouldEvaluateArx]);
+  }, [currencyValue, shouldEvaluateArx, currency.typeName]);
 
   const handleArxChange = (value) => {
     setShouldEvaluateArx(false);

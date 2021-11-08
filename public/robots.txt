@@ -1,2 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /git/
+Disallow: /.vscode/
+Disallow: /.idea/
