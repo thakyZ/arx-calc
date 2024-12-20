@@ -1343,21 +1343,6 @@ arraybuffer.prototype.slice@^1.0.4:
     get-intrinsic "^1.2.6"
     is-array-buffer "^3.0.4"
 
-"arx-calc@file:.":
-  version "0.1.1"
-  dependencies:
-    "@emotion/react" "^11.14.0"
-    "@emotion/styled" "^11.14.0"
-    "@mui/icons-material" "^6.2.1"
-    "@mui/material" "^6.2.1"
-    "@mui/styles" "^6.2.1"
-    arx-calc "file:../../../../../../../AppData/Local/Yarn/Cache/v6/npm-arx-calc-0.1.1-f5d7226e-2b22-42b9-8685-090481bf6219-1734714506839/node_modules/arx-calc"
-    lodash "^4.17.21"
-    mathjs "^14.0.1"
-    msw "^2.7.0"
-    react "^17.0.0"
-    react-dom "^19.0.0"
-
 assertion-error@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/assertion-error/-/assertion-error-2.0.1.tgz#f641a196b335690b1070bf00b6e7593fec190bf7"

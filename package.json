@@ -10,7 +10,6 @@
     "@mui/icons-material": "^6.2.1",
     "@mui/material": "^6.2.1",
     "@mui/styles": "^6.2.1",
-    "arx-calc": "file:",
     "lodash": "^4.17.21",
     "mathjs": "^14.0.1",
     "msw": "^2.7.0",
